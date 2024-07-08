@@ -4,7 +4,7 @@
   "description": "This is the description of the plugin.",
   "strapi": {
     "name": "color-picker",
-    "description": "Description of color-picker plugin",
+    "description": "Description of color-picker plugin TEST TEST",
     "kind": "plugin"
   },
   "dependencies": {

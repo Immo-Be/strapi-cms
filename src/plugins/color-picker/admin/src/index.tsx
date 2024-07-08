@@ -1,9 +1,9 @@
-import { prefixPluginTranslations } from '@strapi/helper-plugin';
+import { prefixPluginTranslations } from "@strapi/helper-plugin";
 
-import pluginPkg from '../../package.json';
-import pluginId from './pluginId';
-import Initializer from './components/Initializer';
-import PluginIcon from './components/PluginIcon';
+import pluginPkg from "../../package.json";
+import pluginId from "./pluginId";
+import Initializer from "./components/Initializer";
+import PluginIcon from "./components/PluginIcon";
 
 const name = pluginPkg.strapi.name;
 
@@ -17,7 +17,7 @@ export default {
         defaultMessage: name,
       },
       Component: async () => {
-        const component = await import('./pages/App');
+        const component = await import("./pages/App");
 
         return component;
       },
@@ -37,6 +37,30 @@ export default {
     };
 
     app.registerPlugin(plugin);
+
+    app.customFields.register({
+      name: "color",
+      pluginId: "color-picker", // the custom field is created by a color-picker plugin
+      type: "string", // the color will be stored as a string
+      intlLabel: {
+        id: "color-picker.color.label",
+        defaultMessage: "Color",
+      },
+      intlDescription: {
+        id: "color-picker.color.description",
+        defaultMessage: "Select any color",
+      },
+      icon: PluginIcon, // don't forget to create/import your icon component
+      components: {
+        Input: async () =>
+          import(
+            /* webpackChunkName: "input-component" */ "./components/color-input/color-input"
+          ),
+      },
+      options: {
+        // declare options here
+      },
+    });
   },
 
   bootstrap(app: any) {},
