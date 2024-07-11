@@ -368,6 +368,7 @@ export interface ApiColorColor extends Schema.CollectionType {
     singularName: 'color';
     pluralName: 'colors';
     displayName: 'Color';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -375,6 +376,11 @@ export interface ApiColorColor extends Schema.CollectionType {
   attributes: {
     colorpicker: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
+    customLocation: Attribute.JSON &
+      Attribute.CustomField<'plugin::custom-location-picker.location'>;
+    location_mapstest: Attribute.JSON &
+      Attribute.CustomField<'plugin::google-maps.location-picker'>;
+    isAnimal: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -386,6 +392,99 @@ export interface ApiColorColor extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::color.color',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCustomLocationCustomLocation extends Schema.CollectionType {
+  collectionName: 'custom_locations';
+  info: {
+    singularName: 'custom-location';
+    pluralName: 'custom-locations';
+    displayName: 'customLocation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    location3d: Attribute.JSON &
+      Attribute.CustomField<'plugin::custom-location-picker.location'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::custom-location.custom-location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::custom-location.custom-location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLocationLocation extends Schema.CollectionType {
+  collectionName: 'locations';
+  info: {
+    singularName: 'location';
+    pluralName: 'locations';
+    displayName: 'location';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    location_gmaps: Attribute.JSON &
+      Attribute.CustomField<'plugin::google-maps.location-picker'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::location.location',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSelectionSelection extends Schema.CollectionType {
+  collectionName: 'selections';
+  info: {
+    singularName: 'selection';
+    pluralName: 'selections';
+    displayName: 'selection';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    DayTime: Attribute.Enumeration<['morning', 'noon', 'evening', 'night']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::selection.selection',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::selection.selection',
       'oneToOne',
       'admin::user'
     > &
@@ -871,6 +970,9 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::color.color': ApiColorColor;
+      'api::custom-location.custom-location': ApiCustomLocationCustomLocation;
+      'api::location.location': ApiLocationLocation;
+      'api::selection.selection': ApiSelectionSelection;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

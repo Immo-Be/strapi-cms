@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_locations",
+  "info": {
+    "singularName": "custom-location",
+    "pluralName": "custom-locations",
+    "displayName": "customLocation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "location3d": {
+      "type": "customField",
+      "customField": "plugin::custom-location-picker.location"
+    }
+  }
+}

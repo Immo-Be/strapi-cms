@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "selections",
+  "info": {
+    "singularName": "selection",
+    "pluralName": "selections",
+    "displayName": "selection"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "DayTime": {
+      "type": "enumeration",
+      "enum": [
+        "morning",
+        "noon",
+        "evening",
+        "night"
+      ]
+    }
+  }
+}

@@ -18,6 +18,7 @@ export default [
           "connect-src": ["'self'", "https:"],
           "script-src": [
             "'self'",
+            "'unsafe-eval'",
             "unsafe-inline",
             "https://maps.googleapis.com",
           ],
