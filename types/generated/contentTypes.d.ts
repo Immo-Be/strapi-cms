@@ -378,8 +378,6 @@ export interface ApiColorColor extends Schema.CollectionType {
       Attribute.CustomField<'plugin::color-picker.color'>;
     customLocation: Attribute.JSON &
       Attribute.CustomField<'plugin::custom-location-picker.location'>;
-    location_mapstest: Attribute.JSON &
-      Attribute.CustomField<'plugin::google-maps.location-picker'>;
     isAnimal: Attribute.Boolean;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -424,37 +422,6 @@ export interface ApiCustomLocationCustomLocation extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::custom-location.custom-location',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLocationLocation extends Schema.CollectionType {
-  collectionName: 'locations';
-  info: {
-    singularName: 'location';
-    pluralName: 'locations';
-    displayName: 'location';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    location_gmaps: Attribute.JSON &
-      Attribute.CustomField<'plugin::google-maps.location-picker'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::location.location',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::location.location',
       'oneToOne',
       'admin::user'
     > &
@@ -720,7 +687,7 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
-export interface PluginGoogleMapsConfig extends Schema.SingleType {
+export interface PluginCustomLocationPickerConfig extends Schema.SingleType {
   collectionName: 'google_maps_configs';
   info: {
     singularName: 'config';
@@ -746,13 +713,13 @@ export interface PluginGoogleMapsConfig extends Schema.SingleType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::google-maps.config',
+      'plugin::custom-location-picker.config',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::google-maps.config',
+      'plugin::custom-location-picker.config',
       'oneToOne',
       'admin::user'
     > &
@@ -971,13 +938,12 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::color.color': ApiColorColor;
       'api::custom-location.custom-location': ApiCustomLocationCustomLocation;
-      'api::location.location': ApiLocationLocation;
       'api::selection.selection': ApiSelectionSelection;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
-      'plugin::google-maps.config': PluginGoogleMapsConfig;
+      'plugin::custom-location-picker.config': PluginCustomLocationPickerConfig;
       'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;

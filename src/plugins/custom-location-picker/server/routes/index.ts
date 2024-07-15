@@ -1,10 +1,26 @@
 export default [
   {
-    method: 'GET',
-    path: '/',
-    handler: 'myController.index',
+    method: "GET",
+    path: "/config",
+    handler: "config.index",
     config: {
-      policies: [],
+      policies: ["admin::isAuthenticatedAdmin"],
+    },
+  },
+  {
+    method: "PUT",
+    path: "/config",
+    handler: "config.update",
+    config: {
+      policies: [
+        "admin::isAuthenticatedAdmin",
+        {
+          name: "admin::hasPermissions",
+          config: {
+            actions: ["plugin::custom-location-picker.config"],
+          },
+        },
+      ],
     },
   },
 ];

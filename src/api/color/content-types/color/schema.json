@@ -20,10 +20,6 @@
       "type": "customField",
       "customField": "plugin::custom-location-picker.location"
     },
-    "location_mapstest": {
-      "type": "customField",
-      "customField": "plugin::google-maps.location-picker"
-    },
     "isAnimal": {
       "type": "boolean"
     }
