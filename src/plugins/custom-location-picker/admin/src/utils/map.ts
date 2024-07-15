@@ -28,7 +28,7 @@ export const initMap = (
   // I tried using the `Loader` class from `@googlemaps/js-api-loader`, but it didn't work.
   const mapsApiLoaded = loadMapsApi({
     v: "alpha",
-    key: "AIzaSyDLDYyCtMZCyxzjUPH1p7SFo1nsbPf5-zw",
+    key: "AIzaSyDXlxrKS689NTGD3tFrZV3wVQNFLk4chyo",
     libraries: mapOptions.libraries,
     loading: mapOptions.loading,
   });

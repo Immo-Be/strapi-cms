@@ -43,7 +43,6 @@ export default function NumberFields({ location }: { location: Location3d }) {
       ? Object.entries(value).map(([k, v]) => ({ [k]: v }))
       : [{ [key]: value }]
   );
-  console.log("🚀 ~ flatenedLocation ~ flatenedLocation:", flatenedLocation);
 
   const {
     center: { lat, lng },

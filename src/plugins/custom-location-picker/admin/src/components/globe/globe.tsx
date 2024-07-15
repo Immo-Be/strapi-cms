@@ -21,18 +21,7 @@ const Globe: FunctionComponent<Props> = ({
   }, [mapRef, map]);
 
   if (map) {
-    // map.addEventListener("mousemove", (e) =>
-    //   console.log("🚀 ~ map.addEventListener ~ e target.lat:", e.target?.center)
-    // );
-
     map.addEventListener("click", (event: any) => {
-      // console.log(
-      //   "🚀 ~ map.addEventListener event.target?.getAttribute:",
-      //   event.target
-      // );
-      // const newValue = JSON.stringify(getGeodata(event.target));
-      // console.log("🚀 ~ map.addEventListener ~ newValue:", newValue);
-
       onCoordsChange({ value: getGeodata(event.target) });
     });
   }
